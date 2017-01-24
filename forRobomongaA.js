@@ -1,4 +1,4 @@
-db.transactions.aggregate([{$match:{"Friend_id":{$exists:true}}},
+db.transactions.aggregate([{$match:{"Category": "Borrow"}},
                                     {$group:{_id:{friend:"$Friend_id",currency:"$Currency"},Amount:{$sum:"$Amount"}}},
                                      {$project:{_id:"$_id.friend",currency:"$_id.currency",amount:"$Amount"}},
                                      {$group:{_id:"$_id",debts:{$push:{currency:"$currency",total:"$amount"}}}},
